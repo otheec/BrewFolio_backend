@@ -11,7 +11,7 @@ public class Brewery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
+
     @ManyToOne
     @JoinColumn(name = "type_id")
     private Type type;
