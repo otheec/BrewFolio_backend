@@ -33,4 +33,9 @@ public class BeerServiceImpl implements BeerService{
     public List<Beer> getAllByBrewery(Brewery brewery) {
         return beerRepository.findAllByBrewery(brewery);
     }
+
+    @Override
+    public List<Beer> getAllByOrderByName() {
+        return beerRepository.findAllByOrderByName();
+    }
 }

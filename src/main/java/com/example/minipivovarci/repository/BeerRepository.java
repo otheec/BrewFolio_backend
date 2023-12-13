@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface BeerRepository extends JpaRepository<Beer, Long> {
     List<Beer> findAllByBrewery(Brewery brewery);
+    List<Beer> findAllByOrderByName();
 }
