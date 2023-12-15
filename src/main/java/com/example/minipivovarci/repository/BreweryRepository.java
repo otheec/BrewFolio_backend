@@ -12,4 +12,5 @@ import java.util.List;
 public interface BreweryRepository extends JpaRepository<Brewery, Long> {
     List<Brewery> getAllByType(Type type);
     List<Brewery> getAllByStatus(Status status);
+    List<Brewery> findByStatus_IdInAndType_IdIn(List<Long> statusIds, List<Long> typeIds);
 }

@@ -39,4 +39,11 @@ public class BreweryController {
         Type type = typeService.getTypeById(id);
         return breweryService.getAllByType(type);
     }
+
+    @GetMapping("/status-and-type")
+    public List<Brewery> getBreweriesByStatusAndType(
+            @RequestParam(name = "statusIds") List<Long> statusIds,
+            @RequestParam(name = "typeIds") List<Long> typeIds) {
+        return breweryService.getBreweriesByStatusIdsAndTypesIds(statusIds, typeIds);
+    }
 }

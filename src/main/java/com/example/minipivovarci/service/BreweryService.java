@@ -13,4 +13,5 @@ public interface BreweryService {
     Brewery createBrewery(BreweryDummy breweryDummy);
     List<Brewery> getAllByType(Type type);
     List<Brewery> getAllByStatus(Status status);
+    List<Brewery> getBreweriesByStatusIdsAndTypesIds(List<Long> statusIds, List<Long> typeIds);
 }

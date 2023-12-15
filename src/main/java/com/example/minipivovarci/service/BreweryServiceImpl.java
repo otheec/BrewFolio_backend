@@ -68,6 +68,11 @@ public class BreweryServiceImpl implements BreweryService{
     }
 
     @Override
+    public List<Brewery> getBreweriesByStatusIdsAndTypesIds(List<Long> statusIds, List<Long> typeIds) {
+        return breweryRepository.findByStatus_IdInAndType_IdIn(statusIds, typeIds);
+    }
+
+    @Override
     public List<Brewery> getAllBreweries() {
         return breweryRepository.findAll();
     }
