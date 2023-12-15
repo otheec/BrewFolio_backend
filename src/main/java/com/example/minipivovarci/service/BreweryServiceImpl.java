@@ -58,6 +58,16 @@ public class BreweryServiceImpl implements BreweryService{
     }
 
     @Override
+    public List<Brewery> getAllByType(Type type) {
+        return breweryRepository.getAllByType(type);
+    }
+
+    @Override
+    public List<Brewery> getAllByStatus(Status status) {
+        return breweryRepository.getAllByStatus(status);
+    }
+
+    @Override
     public List<Brewery> getAllBreweries() {
         return breweryRepository.findAll();
     }
