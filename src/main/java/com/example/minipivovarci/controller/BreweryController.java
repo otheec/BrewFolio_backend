@@ -7,6 +7,7 @@ import com.example.minipivovarci.service.BreweryService;
 import com.example.minipivovarci.service.StatusService;
 import com.example.minipivovarci.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,5 +46,20 @@ public class BreweryController {
             @RequestParam(name = "statusIds") List<Long> statusIds,
             @RequestParam(name = "typeIds") List<Long> typeIds) {
         return breweryService.getBreweriesByStatusIdsAndTypesIds(statusIds, typeIds);
+    }
+
+    @GetMapping("/status-and-type-pages")
+    public List<Brewery> getBreweriesByStatusAndTypePageable(
+            @RequestParam(name = "statusIds") List<Long> statusIds,
+            @RequestParam(name = "typeIds") List<Long> typeIds,
+            Pageable pageable) {
+        return breweryService.getBreweriesPageByStatusIdsAndTypeIdsPageable(statusIds, typeIds, pageable);
+    }
+
+    @GetMapping("/status-and-type-count")
+    public long getCountBreweriesByStatusIdsAndTypeIds(
+            @RequestParam(name = "statusIds") List<Long> statusIds,
+            @RequestParam(name = "typeIds") List<Long> typeIds) {
+        return breweryService.getCountBreweriesByStatusIdsAndTypeIds(statusIds, typeIds);
     }
 }

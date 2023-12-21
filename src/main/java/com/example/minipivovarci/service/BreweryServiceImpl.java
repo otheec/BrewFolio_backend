@@ -5,6 +5,7 @@ import com.example.minipivovarci.model.dummy.BeerDummy;
 import com.example.minipivovarci.model.dummy.BreweryDummy;
 import com.example.minipivovarci.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,6 +29,11 @@ public class BreweryServiceImpl implements BreweryService{
     @Override
     public Brewery createBrewery(Brewery brewery) {
         return breweryRepository.save(brewery);
+    }
+
+    @Override
+    public List<Brewery> getAllBreweries() {
+        return breweryRepository.findAll();
     }
 
     @Override
@@ -73,7 +79,12 @@ public class BreweryServiceImpl implements BreweryService{
     }
 
     @Override
-    public List<Brewery> getAllBreweries() {
-        return breweryRepository.findAll();
+    public List<Brewery> getBreweriesPageByStatusIdsAndTypeIdsPageable(List<Long> statusIds, List<Long> typeIds, Pageable pageable) {
+        return breweryRepository.findByStatus_IdInAndType_IdIn(statusIds, typeIds, pageable);
+    }
+
+    @Override
+    public long getCountBreweriesByStatusIdsAndTypeIds(List<Long> statusIds, List<Long> typeIds) {
+        return breweryRepository.countByStatus_IdInAndType_IdIn(statusIds, typeIds);
     }
 }
