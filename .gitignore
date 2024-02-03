@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+#DTB.xlsx file with resources
+src/main/resources/data/DTB.xlsx
